@@ -1,5 +1,7 @@
 import GameStatus from "../gamestate";
 import Difficulties from "../difficulty";
+import GameScreen from "./game_screen/gamescreen";
+import { DiffTargets } from "../difficulty";
 import { useEffect, useState } from "react";
 
 async function getPokemon(id){
@@ -18,13 +20,13 @@ function getPokemonToChoose(difficulty){
     let amount = 0;
     const MAX_POKEMON = 900;
     if(difficulty == Difficulties.EASY){
-        amount = 6;
+        amount = DiffTargets.EASY;
     }
     else if(difficulty == Difficulties.MEDIUM){
-        amount = 10;
+        amount = DiffTargets.MEDIUM;
     }
     else{
-        amount = 14;
+        amount = DiffTargets.HARD;
     }
 
     let pokemonToChoose = [];
@@ -42,14 +44,7 @@ function getPokemonToChoose(difficulty){
 
 
 
-
-
-
-
-
 function MemoryGame(props){
-
-
 
     const {status, difficulty, changeStatus} = props;
     const [isLoading, changeLoadStatus] = useState(true);
@@ -67,31 +62,22 @@ function MemoryGame(props){
         }
     }    
 
+
     useEffect(() => {
         getPokemonList(difficulty)
     }, [difficulty]);
-    if(isLoading){
-        return(
-            <span>Loading!</span>
-        )
-    }
+    
 
     if(status ==  GameStatus.RUNNING){
-        console.log(pokeList);
+        if(isLoading){
+            return(
+                <span>Loading!</span>
+            )
+        }
+        
         return (
             <>
-            <div>
-                {pokeList.map((pokemon) =>(
-                    <>
-                        <div>
-                            <h1>{pokemon.name}</h1>
-                            <img src={pokemon.img}/>
-
-                        </div>
-                    </>
-                )
-                )}
-            </div>
+                <GameScreen difficulty= {difficulty} changeStatus={changeStatus} pokemonList = {pokeList}/>
             </>
         )
     }

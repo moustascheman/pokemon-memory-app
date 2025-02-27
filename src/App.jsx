@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-      <MainMenu status={status} setDifficulty={setDifficulty} changeStatus = {setGameState}/>
+      <MainMenu status={status} setDifficulty={setDifficulty} changeStatus = {setGameState} difficulty = {selectedDiff}/>
       <MemoryGame status={status} difficulty = {selectedDiff} changeStatus = {setGameState}/>
       <GameOver status={status}/>
       <GameOver status = {status} />

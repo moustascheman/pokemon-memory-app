@@ -12,7 +12,9 @@ function MainMenu(props) {
     }
 
     if(status == GameStatus.MAINMENU){
-        if()
+        if(difficulty != undefined){
+            setDifficulty(undefined);
+        }
 
         return (
             <>
