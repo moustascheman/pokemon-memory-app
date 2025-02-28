@@ -3,10 +3,19 @@ import GameHeader from "./GameHeader";
 import Difficulties from "../../difficulty";
 import { DisplayTargets } from "../../difficulty";
 import Card from "./Card";
-function pickIndexRandomly(max, exclude){
 
+
+function shuffle(source){
+    const sourceCopy = [...source];
+    for(let i=(sourceCopy.length-1); i>0; i--){
+        const toSwap = Math.floor(Math.random()*(i+1));
+        const swap1 = sourceCopy[i];
+        const swap2 = sourceCopy[toSwap];
+        sourceCopy[i] = swap2;
+        sourceCopy[toSwap] = swap1;
+    }
+    return sourceCopy;
 }
-
 
 
 function GameScreen(props){
@@ -39,6 +48,7 @@ function GameScreen(props){
             }
         })
         const guaranteedNotPicked = notPicked[Math.floor(Math.random()*notPicked.length)];
+        console.log(`Not picked ${guaranteedNotPicked.name}`);
         toDisplay.push(guaranteedNotPicked);
         const notPickedIndex = sourceListCopy.indexOf(guaranteedNotPicked);
         sourceListCopy.splice(notPickedIndex, 1);
@@ -48,7 +58,7 @@ function GameScreen(props){
             toDisplay.push(sourceListCopy[addToList]);
             sourceListCopy.splice(addToList, 1);
         }
-        return toDisplay;
+        return shuffle(toDisplay);
 
     }    
 

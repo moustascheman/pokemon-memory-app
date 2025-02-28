@@ -31,9 +31,9 @@ function getPokemonToChoose(difficulty){
 
     let pokemonToChoose = [];
     for(let i = 0; i< amount; i++){
-        let pokemonNum = Math.floor(Math.random()*MAX_POKEMON);
+        let pokemonNum = 1 + Math.floor(Math.random()*MAX_POKEMON);
         while(pokemonToChoose.includes(pokemonNum)){
-            pokemonNum = Math.floor(Math.random()*MAX_POKEMON);
+            pokemonNum = 1 + Math.floor(Math.random()*MAX_POKEMON);
         }
         pokemonToChoose.push(pokemonNum);
     }
