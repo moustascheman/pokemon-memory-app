@@ -5,6 +5,7 @@ import GameStatus from './gamestate.js'
 import MainMenu from './components/MainMenu.jsx'
 import MemoryGame from './components/MemoryGame.jsx'
 import GameOver from './components/GameOver.jsx'
+import GameWon from './components/GameWon.jsx'
 import Difficulties from './difficulty.js'
 import './App.css'
 
@@ -16,8 +17,8 @@ function App() {
     <>
       <MainMenu status={status} setDifficulty={setDifficulty} changeStatus = {setGameState} difficulty = {selectedDiff}/>
       <MemoryGame status={status} difficulty = {selectedDiff} changeStatus = {setGameState}/>
-      <GameOver status={status}/>
-      <GameOver status = {status} />
+      <GameOver status={status} changeStatus = {setGameState} />
+      <GameWon status = {status}  changeStatus = {setGameState}/>
     </>
   )
 }

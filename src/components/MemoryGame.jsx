@@ -64,8 +64,10 @@ function MemoryGame(props){
 
 
     useEffect(() => {
-        getPokemonList(difficulty)
-    }, [difficulty]);
+        if(status == GameStatus.RUNNING){
+            getPokemonList(difficulty)
+        }
+    }, [status]);
     
 
     if(status ==  GameStatus.RUNNING){

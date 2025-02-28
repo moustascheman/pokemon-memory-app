@@ -3,6 +3,7 @@ import GameHeader from "./GameHeader";
 import Difficulties from "../../difficulty";
 import { DisplayTargets } from "../../difficulty";
 import Card from "./Card";
+import GameStatus from "../../gamestate";
 
 
 function shuffle(source){
@@ -24,6 +25,23 @@ function GameScreen(props){
     const [currentScore, setCurrentScore] = useState(0);
     const [selectedPokemon, changeSelectedPokemon] = useState([]);
     
+
+    function choosePokemon(pokemon){
+        if(selectedPokemon.includes(pokemon)){
+            changeStatus(GameStatus.GAMEOVER);
+        }
+        else{
+            if((currentScore+1) >= targetValue){
+                changeStatus(GameStatus.GAMEWON);
+            }
+            else{
+                setCurrentScore(currentScore+1);
+                changeSelectedPokemon([...selectedPokemon, pokemon]);
+            }
+        }
+    }
+
+
     function getPokemonToDisplay(sourceList, selectedList, difficulty){
         const notPicked = [];
         const toDisplay = [];
@@ -71,7 +89,7 @@ function GameScreen(props){
                     {displayPokemon.map((pokemon) => (
                         
                         <li key={pokemon.id}>
-                            <Card pokemon={pokemon}/>
+                            <Card pokemon={pokemon} onclick = {(poke) => {choosePokemon(poke)}}/>
                         </li>
 
                     ))}
