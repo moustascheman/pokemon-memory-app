@@ -1,4 +1,4 @@
-
+import '../../styles/card.css';
 
 function Card(props){
  const {pokemon, onclick} = props;
@@ -6,7 +6,7 @@ function Card(props){
 
  return (
     <>
-        <div>
+        <div className='selectionCard'>
             
             <img src={pokemon.img} onClick={() => {onclick(pokemon)}}/>
             <h1>

@@ -12,7 +12,7 @@ async function getPokemon(id){
         id: pokeObj.id,
         img: pokeObj.sprites.front_default
     }
-    //console.log(pokemon);
+    
     return pokemon;
 }
 
@@ -37,7 +37,7 @@ function getPokemonToChoose(difficulty){
         }
         pokemonToChoose.push(pokemonNum);
     }
-   // console.log(pokemonToChoose)
+   
     return pokemonToChoose;
 
 }

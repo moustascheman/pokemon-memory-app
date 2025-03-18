@@ -1,0 +1,10 @@
+
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+}
+
+ul{
+    list-style: none;
+}

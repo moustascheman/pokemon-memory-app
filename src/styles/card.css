@@ -1,0 +1,31 @@
+.selectionCard {
+    display: flex;
+    flex-direction: column;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    align-items: center;
+    padding-inline: 10px;
+    padding-block: 5px;
+    border-radius: 10px;
+    width: 200px;
+    height: auto;
+    background-color: #343434;
+}
+
+.selectionCard img {
+    width: 180px;
+    height: auto;
+}
+
+
+.selectionCard h1 {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.7rem;
+    color: white;
+}
+
+.selectionCard:hover {
+    background-color: dimgrey;
+}

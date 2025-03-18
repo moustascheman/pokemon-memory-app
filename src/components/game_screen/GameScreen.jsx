@@ -4,6 +4,7 @@ import Difficulties from "../../difficulty";
 import { DisplayTargets } from "../../difficulty";
 import Card from "./Card";
 import GameStatus from "../../gamestate";
+import '../../styles/GameScreen.css';
 
 
 function shuffle(source){
@@ -66,7 +67,7 @@ function GameScreen(props){
             }
         })
         const guaranteedNotPicked = notPicked[Math.floor(Math.random()*notPicked.length)];
-        console.log(`Not picked ${guaranteedNotPicked.name}`);
+        
         toDisplay.push(guaranteedNotPicked);
         const notPickedIndex = sourceListCopy.indexOf(guaranteedNotPicked);
         sourceListCopy.splice(notPickedIndex, 1);
