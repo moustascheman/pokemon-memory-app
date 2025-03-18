@@ -1,18 +1,9 @@
 import GameStatus from "../gamestate";
 import Difficulties from "../difficulty";
-
+import { Link } from "react-router-dom";
 
 
 function MainMenu(props) {
-    const {status, setDifficulty, changeStatus, difficulty}  = props;
-
-    function changeDifficulty(difficultyLevel){
-        setDifficulty(difficultyLevel);
-        changeStatus(GameStatus.RUNNING);
-    }
-
-    if(status == GameStatus.MAINMENU){
-        
 
         return (
             <>
@@ -20,24 +11,20 @@ function MainMenu(props) {
                 <h1>Select your difficulty</h1>
                 <ul>
                     <li>
-                        <button onClick={() => {changeDifficulty(Difficulties.EASY)}}>Easy</button>
+                        <Link to="game/0">Easy</Link>
                     </li>
                     <li>
-                        <button onClick={() => {changeDifficulty(Difficulties.MEDIUM)}}>Medium</button>
+                        <Link to="game/1">Medium</Link>
                     </li>
                     <li>
-                        <button onClick={() => {changeDifficulty(Difficulties.HARD)}}>Hard</button>
+                        <Link to="game/2">Hard</Link>
                     </li>
                 </ul>
             </div>
             </>
         )
-    }
-    else{
-        return (
-            <></>
-        )
-    }
+    
+    
 
 }
 
