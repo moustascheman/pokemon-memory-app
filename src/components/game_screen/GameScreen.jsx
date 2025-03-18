@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import GameHeader from "./GameHeader";
 import Difficulties from "../../difficulty";
 import { DisplayTargets } from "../../difficulty";
 import Card from "./Card";
 import GameStatus from "../../gamestate";
+import GameOverModal from "./GameOverModal";
 import '../../styles/GameScreen.css';
 
 
@@ -21,19 +22,30 @@ function shuffle(source){
 
 
 function GameScreen(props){
-    const {changeStatus, difficulty, pokemonList} = props;
+    const {difficulty, pokemonList, reload, reloadGame} = props;
     const [targetValue, setTargetValue] = useState(pokemonList.length);
     const [currentScore, setCurrentScore] = useState(0);
     const [selectedPokemon, changeSelectedPokemon] = useState([]);
-    
+    const [victory, changeVictoryStatus] = useState(false);
+    const [isGameOver, changeGameStatus] = useState(false);
+    const modal = useRef();
+
+    function reloadGameScreen(){
+        setCurrentScore(0);
+        changeSelectedPokemon([]);
+        changeVictoryStatus(false);
+        changeGameStatus(false);
+        reloadGame(!reload);
+    }
 
     function choosePokemon(pokemon){
         if(selectedPokemon.includes(pokemon)){
-            changeStatus(GameStatus.GAMEOVER);
+            changeGameStatus(true);
         }
         else{
             if((currentScore+1) >= targetValue){
-                changeStatus(GameStatus.GAMEWON);
+                changeVictoryStatus(true);
+                changeGameStatus(true);
             }
             else{
                 setCurrentScore(currentScore+1);
@@ -49,17 +61,19 @@ function GameScreen(props){
         const sourceListCopy = [...sourceList];
 
         let displayAmount = 0;
-        switch(difficulty){
-            case Difficulties.EASY:
+        if(difficulty == Difficulties.EASY){
                 displayAmount = DisplayTargets.EASY;
-                break;
-            case Difficulties.MEDIUM:
-                displayAmount = DisplayTargets.MEDIUM;
-                break;
-            case Difficulties.HARD:
-                displayAmount = DisplayTargets.HARD;
-                break;
         }
+        else if(difficulty == Difficulties.MEDIUM){
+         
+                displayAmount = DisplayTargets.MEDIUM;
+        }
+        else{
+            
+            displayAmount = DisplayTargets.HARD;
+            
+        }
+        console.log(displayAmount);
 
         sourceListCopy.map((pokemon) => {
             if(!selectedList.includes(pokemon)){
@@ -82,6 +96,13 @@ function GameScreen(props){
     }    
 
     const displayPokemon = getPokemonToDisplay(pokemonList, selectedPokemon, difficulty);
+    if(isGameOver){
+        modal.current?.showModal();
+    }
+    else {
+        modal.current?.close();
+    }
+
     return (
         <>
             <div className="GameScreen">
@@ -95,7 +116,9 @@ function GameScreen(props){
 
                     ))}
                 </ul>
-
+                <dialog ref = {modal}>
+                    <GameOverModal victory={victory} difficulty={difficulty} reload = {()=>{reloadGameScreen()}}/>
+                </dialog>
             </div>
         </>
     )
