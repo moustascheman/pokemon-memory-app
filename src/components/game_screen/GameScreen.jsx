@@ -35,7 +35,7 @@ function GameScreen(props){
         changeSelectedPokemon([]);
         changeVictoryStatus(false);
         changeGameStatus(false);
-        reloadGame(!reload);
+        reloadGame();
     }
 
     function choosePokemon(pokemon){

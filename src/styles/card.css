@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+
 .selectionCard {
     display: flex;
     flex-direction: column;
@@ -23,6 +25,8 @@
     font-weight: 400;
     font-style: normal;
     font-size: 1.7rem;
+    font-family: "Cairo", sans-serif;
+    
     color: white;
 }
 

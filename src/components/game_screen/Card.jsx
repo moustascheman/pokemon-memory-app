@@ -1,4 +1,5 @@
 import '../../styles/card.css';
+import { FormatTitle } from '../../util/util';
 
 function Card(props){
  const {pokemon, onclick} = props;
@@ -10,7 +11,7 @@ function Card(props){
             
             <img src={pokemon.img} onClick={() => {onclick(pokemon)}}/>
             <h1>
-                {pokemon.name}
+                {FormatTitle(pokemon.name)}
             </h1>
 
         </div>

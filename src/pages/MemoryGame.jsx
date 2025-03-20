@@ -10,7 +10,7 @@ async function getPokemon(id) {
     const pokemon = {
         name: pokeObj.name,
         id: pokeObj.id,
-        img: pokeObj.sprites.front_default
+        img: pokeObj.sprites.other['official-artwork'].front_default
     }
 
     return pokemon;
@@ -44,6 +44,7 @@ function getPokemonToChoose(difficulty) {
 
 
 
+
 function MemoryGame() {
     const { difficulty } = useParams();
     const [isLoading, changeLoadStatus] = useState(true);
@@ -62,6 +63,13 @@ function MemoryGame() {
 
     }
 
+    
+function customReload(){
+    changeLoadStatus(true);
+    reloadGame(!reload);
+}
+
+
 
     useEffect(() => {
         getPokemonList(difficulty)
@@ -77,7 +85,7 @@ function MemoryGame() {
 
     return (
         <>
-            <GameScreen difficulty={difficulty} pokemonList={pokeList} reload={reload} reloadGame={reloadGame}/>
+            <GameScreen difficulty={difficulty} pokemonList={pokeList} reloadGame={customReload}/>
         </>
     )
 }
