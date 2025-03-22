@@ -10,7 +10,8 @@ async function getPokemon(id) {
     const pokemon = {
         name: pokeObj.name,
         id: pokeObj.id,
-        img: pokeObj.sprites.other['official-artwork'].front_default
+        img: pokeObj.sprites.other['official-artwork'].front_default,
+        types: pokeObj.types
     }
 
     return pokemon;
