@@ -3,6 +3,7 @@ import GameScreen from "../components/game_screen/gamescreen";
 import { useParams } from "react-router-dom";
 import { DiffTargets } from "../difficulty";
 import { useEffect, useState } from "react";
+import LoadingScreen from "../components/LoadingScreen";
 
 async function getPokemon(id) {
     const pokeRaw = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -80,7 +81,7 @@ function customReload(){
 
     if (isLoading) {
         return (
-            <span>Loading!</span>
+            <LoadingScreen/>
         )
     }
 
