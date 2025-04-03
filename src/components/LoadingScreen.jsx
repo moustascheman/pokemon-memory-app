@@ -1,4 +1,5 @@
 import pokeball from '../assets/pokeball.svg'
+import "../styles/loadingScreen.css"
 
 function LoadingScreen(){
 

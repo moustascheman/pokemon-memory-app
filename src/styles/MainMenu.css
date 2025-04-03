@@ -12,6 +12,7 @@
 
 .titleCard img {
     width: 600px;
+    aspect-ratio: 600/220;
 }
 
 .titleCard h1{
@@ -25,3 +26,5 @@
     margin: 0;
     padding-top: 10px;
 }
+
+

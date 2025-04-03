@@ -3,6 +3,7 @@
 .cardGrid {
     display: grid;
     grid-template-columns: repeat(4, auto);
+    gap: 1rem;
 }
 
 ul{

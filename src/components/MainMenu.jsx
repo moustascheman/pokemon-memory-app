@@ -3,6 +3,7 @@ import Difficulties from "../difficulty";
 import { Link } from "react-router-dom";
 import pokemonLogo from "../assets/pokemon.svg"
 import "../styles/MainMenu.css"
+import pokeball from "../assets/pokeball.svg"
 
 
 function MainMenu(props) {
@@ -13,7 +14,7 @@ function MainMenu(props) {
                 <img src={pokemonLogo}/>
                 <h1>MEMORY GAME</h1>
             </div>
-            
+
             <div className="mainMenuContainer">
                 <h2>Select your difficulty</h2>
                 <ul>

@@ -1,16 +1,9 @@
 
-
-
-
 .loadingScreen {
     display: flex;
     flex-direction: column;
     align-items: center;
     
-}
-.pokeballIcon {
-    max-width: 400px;
-    animation: spin 1s cubic-bezier(0.39, 0.575, 0.565, 1) infinite;
 
 }
 
@@ -19,3 +12,10 @@
         transform: rotate(360deg);
     }
 }
+
+.pokeballIcon {
+    max-width: 400px;
+    animation: spin 1s cubic-bezier(0.39, 0.575, 0.565, 1) infinite;
+
+}
+
